@@ -31,7 +31,7 @@ def print_report(num_words, letter_mapping, average_length):
     sorted_mapping.sort()
     for pair in sorted_mapping:
         print(f"The '{pair[0]}' character was found {pair[1]} times")
-    print("--- End report ---")
+    print("\n--- End report ---")
 
 with open("books/frankenstein.txt") as f:
     file_contents = f.read()
