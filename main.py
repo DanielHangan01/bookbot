@@ -6,16 +6,25 @@ def count_letters(text):
     letter_mapping = {}
     text = text.lower()
     for char in text:
-        if char == ' ':
-            pass
+        if not char.isalpha():
+            continue
         if not char in letter_mapping:
             letter_mapping[char] = 1
         else:
             letter_mapping[char] += 1
     return letter_mapping
 
+def print_report(num_words, letter_mapping):
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"{num_words} words found in the document\n")
+    sorted_mapping = list(letter_mapping.items())
+    sorted_mapping.sort()
+    for pair in sorted_mapping:
+        print(f"The '{pair[0]}' character was found {pair[1]} times")
+    print("--- End report ---")
 
 with open("books/frankenstein.txt") as f:
     file_contents = f.read()
-    print(count_words(file_contents))
-    print(count_letters(file_contents))
+    num_words = count_words(file_contents)
+    letter_mapping = count_letters(file_contents)
+    print_report(num_words, letter_mapping)
